@@ -11,6 +11,7 @@ import {
   List,
   ListItem,
   Text,
+  useColorModeValue,
   VStack,
 } from "@chakra-ui/react";
 import { FaTrash } from "react-icons/fa";
@@ -18,6 +19,9 @@ import { FaTrash } from "react-icons/fa";
 const Index = () => {
   const [tasks, setTasks] = useState([]);
   const [newTask, setNewTask] = useState("");
+
+  const bg = useColorModeValue("gray.100", "gray.700");
+  const completedBg = useColorModeValue("green.100", "green.700");
 
   const addTask = () => {
     if (newTask.trim() !== "") {
@@ -63,7 +67,7 @@ const Index = () => {
                 display="flex"
                 alignItems="center"
                 justifyContent="space-between"
-                bg={task.completed ? "green.100" : "gray.100"}
+                bg={task.completed ? completedBg : bg}
                 p={2}
                 borderRadius="md"
               >
